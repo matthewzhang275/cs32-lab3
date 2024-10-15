@@ -57,8 +57,8 @@ StudentRoll::~StudentRoll() {
   while (shallowHead != nullptr) {
     Node* dummyHead = shallowHead; 
     shallowHead = shallowHead->next; 
-    delete dummyHead;
     delete dummyHead->s;
+    delete dummyHead;
   }
 }
 
@@ -77,8 +77,8 @@ StudentRoll & StudentRoll::operator =(const StudentRoll &right ) {
   while (shallowHead != nullptr) {
     Node* dummyHead = shallowHead; 
     shallowHead = shallowHead->next; 
-    delete dummyHead;  
     delete dummyHead->s;
+    delete dummyHead;  
   }
 
   head = tail = NULL;
