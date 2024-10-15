@@ -2,29 +2,29 @@
 #include <string>
 #include <cstring>
 
-int countDigit(int number) {
-  if (number == 0) return 0; 
-  return 1 + countDigit(number / 10); //Edge Case: negative ID number. 
-}
+// int countDigit(int number) {
+//   if (number == 0) return 0; 
+//   return 1 + countDigit(number / 10); //Edge Case: negative ID number. 
+// }
 
-char* getChar(int number) {
-  int digits = countDigit(number); 
-  char* returnChar = new char[digits + 1];
-  for (int i = 0; i < digits; i++) {
-    returnChar[i] = number % 10 + '0';
-    number = number / 10; 
-  }
+// char* getChar(int number) {
+//   int digits = countDigit(number); 
+//   char* returnChar = new char[digits + 1];
+//   for (int i = 0; i < digits; i++) {
+//     returnChar[i] = number % 10 + '0';
+//     number = number / 10; 
+//   }
 
-  for (int i = 0; i < digits / 2; i++) {
-    char temp = returnChar[i]; 
-    returnChar[i] = returnChar[digits - i - 1]; 
-    returnChar[digits - i - 1] = temp;  
-  }
+//   for (int i = 0; i < digits / 2; i++) {
+//     char temp = returnChar[i]; 
+//     returnChar[i] = returnChar[digits - i - 1]; 
+//     returnChar[digits - i - 1] = temp;  
+//   }
 
-  returnChar[digits] = '\0';
+//   returnChar[digits] = '\0';
 
-  return returnChar; 
-}
+//   return returnChar; 
+// }
 
 Student::Student(const char * const name, int perm) {
   this->setName(name);
@@ -44,6 +44,9 @@ void Student::setPerm(const int permNumber) {
 }
 
 void Student::setName(const char * const name) {
+  if (this->name != nullptr) {
+    delete[] this->name; 
+  }
   this->name = new char[strlen(name)+1];
   strcpy(this->name, name);
 }
@@ -111,7 +114,7 @@ std::string Student::toString() const {
   returnString += ",";
   returnString += std::to_string(this->perm);
   returnString += "]";
-  
+
   return returnString;
 }
 
