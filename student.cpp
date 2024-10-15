@@ -48,12 +48,12 @@ void Student::setName(const char * const name) {
   //   delete[] this->name; 
   // }
 
-  if (name == nullptr) {
-    return;
-  }
-  if (this->name != nullptr) {
-    delete[] this->name; 
-  }
+  // if (name == nullptr) {
+  //   return;
+  // }
+  // if (this->name != nullptr) {
+  //   delete[] this->name; 
+  // }
 
   this->name = new char[strlen(name)+1];
   strcpy(this->name, name);
