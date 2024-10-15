@@ -49,9 +49,11 @@ void Student::setName(const char * const name) {
   // }
 
   if (name == nullptr) {
+    delete[] this->name; 
     this->name = nullptr;
     return;
   }
+
   if (this->name != nullptr) {
     delete[] this->name; 
   }
