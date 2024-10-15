@@ -1,32 +1,10 @@
 #include "student.h"
 #include <string>
 #include <cstring>
+#include <iostream>
 
-// int countDigit(int number) {
-//   if (number == 0) return 0; 
-//   return 1 + countDigit(number / 10); //Edge Case: negative ID number. 
-// }
-
-// char* getChar(int number) {
-//   int digits = countDigit(number); 
-//   char* returnChar = new char[digits + 1];
-//   for (int i = 0; i < digits; i++) {
-//     returnChar[i] = number % 10 + '0';
-//     number = number / 10; 
-//   }
-
-//   for (int i = 0; i < digits / 2; i++) {
-//     char temp = returnChar[i]; 
-//     returnChar[i] = returnChar[digits - i - 1]; 
-//     returnChar[digits - i - 1] = temp;  
-//   }
-
-//   returnChar[digits] = '\0';
-
-//   return returnChar; 
-// }
-
-Student::Student(const char * const name, int perm): name(nullptr) {
+Student::Student(const char * const name, int perm) {
+  this->name = nullptr;
   this->setName(name);
   this->setPerm(perm);
 }
@@ -36,7 +14,10 @@ int Student::getPerm() const {
 }
 
 const char * const Student::getName() const {
-  return this->name;
+  if (this->name != nullptr) {
+    return this->name;
+  }
+  return nullptr; 
 }
 
 void Student::setPerm(const int permNumber) {
@@ -44,15 +25,14 @@ void Student::setPerm(const int permNumber) {
 }
 
 void Student::setName(const char * const name) {
-  if (this->name != nullptr) {
-      delete[] this->name; 
-  }
+  // if (this->name != nullptr) {
+  //     delete[] this->name; 
+  // }
 
-  if (name == nullptr) {
-    this->name = nullptr;
-    return;
-  }
-
+  // if (name == nullptr) {
+  //   this->name = nullptr;
+  //   return;
+  // }
   this->name = new char[strlen(name)+1];
   strcpy(this->name, name);
 }
@@ -64,8 +44,9 @@ Student::Student(const Student &orig) {
 }
 
 Student::~Student() {
-  delete[] this->name; 
-  this->name = nullptr;
+  if (this->name != nullptr) {
+    delete[] this->name; 
+  }
 }
 
 Student & Student::operator=(const Student &right) {
@@ -80,11 +61,8 @@ Student & Student::operator=(const Student &right) {
   // fill in...
   const char* name = right.getName(); 
   int perm = right.getPerm(); 
-
-  delete [] this->name; 
   this->setName(name);
   this->setPerm(perm);
-
 
   // KEEP THE CODE BELOW THIS LINE
   // Overloaded = should end with this line, despite what the textbook says.
