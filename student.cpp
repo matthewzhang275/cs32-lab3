@@ -3,7 +3,7 @@
 #include <cstring>
 #include <iostream>
 
-Student::Student(const char * const name, int perm) {
+Student::Student(const char * const name, int perm): name(nullptr){
   this->setName(name);
   this->setPerm(perm);
 }
@@ -29,8 +29,7 @@ void Student::setName(const char * const name) {
 }
 
 
-Student::Student(const Student &orig) {
-  this->name = nullptr;
+Student::Student(const Student &orig) : name(nullptr) {
   this->setName(orig.getName());
   this->setPerm(orig.getPerm());
 }
