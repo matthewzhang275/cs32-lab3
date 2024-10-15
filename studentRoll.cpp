@@ -43,9 +43,6 @@ std::string StudentRoll::toString() const {
 
 StudentRoll::StudentRoll(const StudentRoll &orig) {
   head = tail = NULL;
-  if (orig.head == nullptr) {
-    return;
-  }
 
   Node* current = orig.head;
   while (current != nullptr) {
