@@ -26,7 +26,7 @@
 //   return returnChar; 
 // }
 
-Student::Student(const char * const name, int perm) {
+Student::Student(const char * const name, int perm): name(nullptr) {
   this->setName(name);
   this->setPerm(perm);
 }
@@ -67,6 +67,7 @@ Student::Student(const Student &orig) {
 
 Student::~Student() {
   delete[] this->name; 
+  this->name = nullptr;
 }
 
 Student & Student::operator=(const Student &right) {
