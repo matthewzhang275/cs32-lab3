@@ -21,13 +21,16 @@ void Student::setPerm(const int permNumber) {
 }
 
 void Student::setName(const char * const name) {
-  // delete[] this->name; 
+  if (this->name != nullptr) {
+    delete[] this->name; 
+  }
   this->name = new char[strlen(name)+1];
   strcpy(this->name, name);
 }
 
 
 Student::Student(const Student &orig) {
+  this->name = nullptr;
   this->setName(orig.getName());
   this->setPerm(orig.getPerm());
 }
@@ -46,7 +49,6 @@ Student & Student::operator=(const Student &right) {
 
   // TODO... Here is where there is code missing that you need to 
   // fill in...
-  delete[] this->name;
   const char* name = right.getName(); 
   int perm = right.getPerm(); 
   this->setName(name);
