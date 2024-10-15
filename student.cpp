@@ -4,7 +4,6 @@
 #include <iostream>
 
 Student::Student(const char * const name, int perm) {
-  this->name = nullptr;
   this->setName(name);
   this->setPerm(perm);
 }
@@ -14,10 +13,7 @@ int Student::getPerm() const {
 }
 
 const char * const Student::getName() const {
-  if (this->name != nullptr) {
-    return this->name;
-  }
-  return nullptr; 
+  return this->name;
 }
 
 void Student::setPerm(const int permNumber) {
@@ -25,14 +21,9 @@ void Student::setPerm(const int permNumber) {
 }
 
 void Student::setName(const char * const name) {
-  // if (this->name != nullptr) {
-  //     delete[] this->name; 
-  // }
-
-  // if (name == nullptr) {
-  //   this->name = nullptr;
-  //   return;
-  // }
+  if (this->name != nullptr) {
+      delete[] this->name; 
+  }
   this->name = new char[strlen(name)+1];
   strcpy(this->name, name);
 }
@@ -44,9 +35,7 @@ Student::Student(const Student &orig) {
 }
 
 Student::~Student() {
-  if (this->name != nullptr) {
-    delete[] this->name; 
-  }
+  delete[] this->name; 
 }
 
 Student & Student::operator=(const Student &right) {
@@ -73,9 +62,7 @@ Student & Student::operator=(const Student &right) {
 std::string Student::toString() const {
   std::string returnString = "[";
 
-  if (this->name != nullptr) {
-    returnString += this->name;
-  }
+  returnString += this->name;
   returnString += ",";
   returnString += std::to_string(this->perm);
   returnString += "]";
