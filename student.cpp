@@ -26,7 +26,7 @@
 //   return returnChar; 
 // }
 
-Student::Student(const char * const name, int perm) : name(nullptr) {
+Student::Student(const char * const name, int perm) {
   this->setName(name);
   this->setPerm(perm);
 }
@@ -47,6 +47,12 @@ void Student::setName(const char * const name) {
   // if (this->name != NULL) {
   //   delete[] this->name; 
   // }
+  if (this->name == nullptr) {
+    delete[] this->name; 
+  }
+  if (name == nullptr) {
+    return;
+  }
   this->name = new char[strlen(name)+1];
   strcpy(this->name, name);
 }
@@ -86,28 +92,6 @@ Student & Student::operator=(const Student &right) {
 }
 
 std::string Student::toString() const {
-  // int lengthOfName = strlen(this->name);
-  // int lengthOfID = countDigit(this->perm);
-
-  // int sizeReturnString = 3 + lengthOfName + lengthOfID + 1; 
-  // char returnString[sizeReturnString]; 
-
-  // returnString[0] = '['; 
-  // for (int i = 0; i < lengthOfName; i++) {
-  //   returnString[1+i] = this->name[i]; 
-  // }
-
-  // returnString[lengthOfName+1] = ','; 
-
-  // char* convertedToChar = getChar(this->perm); 
-  // for (int i = 0; i < lengthOfID; i++) {
-  //   returnString[lengthOfName + 2 + i] = convertedToChar[i]; 
-  // }
-
-  // delete[] convertedToChar;
-
-  // returnString[sizeReturnString - 2] = ']'; 
-  
   std::string returnString = "[";
 
   returnString += this->name;
