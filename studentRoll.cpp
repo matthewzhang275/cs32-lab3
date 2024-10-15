@@ -41,7 +41,7 @@ std::string StudentRoll::toString() const {
   return returnString;
 }
 
-StudentRoll::StudentRoll(const StudentRoll &orig) {
+StudentRoll::StudentRoll(const StudentRoll &orig){
   head = tail = NULL;
 
   Node* current = orig.head;
@@ -58,6 +58,7 @@ StudentRoll::~StudentRoll() {
     Node* dummyHead = shallowHead; 
     shallowHead = shallowHead->next; 
     delete dummyHead;
+    delete dummyHead->s;
   }
 }
 
@@ -77,6 +78,7 @@ StudentRoll & StudentRoll::operator =(const StudentRoll &right ) {
     Node* dummyHead = shallowHead; 
     shallowHead = shallowHead->next; 
     delete dummyHead;  
+    delete dummyHead->s;
   }
 
   head = tail = NULL;
