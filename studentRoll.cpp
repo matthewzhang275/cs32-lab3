@@ -76,13 +76,13 @@ StudentRoll & StudentRoll::operator =(const StudentRoll &right ) {
   // TODO... Here is where there is code missing that you need to 
   // fill in...
 
-  Node* shallowHead = this->head;
-  while (shallowHead != nullptr) {
-    Node* dummyHead = shallowHead; 
-    shallowHead = shallowHead->next; 
-    delete dummyHead->s;
-    delete dummyHead;  
-  }
+  // Node* shallowHead = this->head;
+  // while (shallowHead != nullptr) {
+  //   Node* dummyHead = shallowHead; 
+  //   shallowHead = shallowHead->next; 
+  //   delete dummyHead->s;
+  //   delete dummyHead;  
+  // }
 
   head = tail = NULL;
   if (right.head == nullptr) {
