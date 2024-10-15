@@ -82,10 +82,7 @@ StudentRoll & StudentRoll::operator =(const StudentRoll &right ) {
   }
 
   head = tail = NULL;
-  if (right.head == nullptr) {
-    return (*this);
-  }
-
+  
   Node* current = right.head;
   while (current != nullptr) {
     this->insertAtTail(*current->s);
