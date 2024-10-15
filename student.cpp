@@ -26,7 +26,7 @@
 //   return returnChar; 
 // }
 
-Student::Student(const char * const name, int perm) {
+Student::Student(const char * const name, int perm) : name(nullptr) {
   this->setName(name);
   this->setPerm(perm);
 }
